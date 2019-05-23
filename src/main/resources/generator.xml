@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.apache.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <classPathEntry location="/Users/helloworld/.m2/repository/mysql/mysql-connector-java/5.1.46/mysql-connector-java-5.1.46.jar"/>
+
+    <context id="ssm-context" targetRuntime="MyBatis3">
+        <!-- 自定义生成插件 生成toString方法/实现Serializable接口--><!-- 插件可以写多个-->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>-->
+        <commentGenerator type="config.MyCommentGenerator"></commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.200.10.140:3306/loan?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Shanghai&amp;allowMultiQueries=true"
+                        userId="loan2018" password="loan2018_"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.csii.loan.product.model.prd"
+                            targetProject="src/main/java"/>
+
+
+        <sqlMapGenerator targetPackage="mapper.prd"
+                         targetProject="src/main/resources"/>
+
+        <javaClientGenerator
+                type="XMLMAPPER"
+                targetPackage="com.csii.loan.product.model.prd.mapper"
+                targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <table tableName="prd_grt_prop"
+               domainObjectName="prdGrtProp"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="flase"/>
+            <!-- 忽略指定的column -->
+            <ignoreColumn column="id"  delimitedColumnName="true" />
+            <ignoreColumn column="cur_vers"  delimitedColumnName="true" />
+            <ignoreColumn column="create_user"  delimitedColumnName="true" />
+            <ignoreColumn column="create_org"  delimitedColumnName="true" />
+            <ignoreColumn column="create_time"  delimitedColumnName="true" />
+            <ignoreColumn column="update_time"  delimitedColumnName="true" />
+            <ignoreColumn column="update_user"  delimitedColumnName="true" />
+            <ignoreColumn column="update_org"  delimitedColumnName="true" />
+        </table>
+    </context>
+</generatorConfiguration>

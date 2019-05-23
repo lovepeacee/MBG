@@ -1,0 +1,31 @@
+### Java
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Package Files #
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+### macOS
+.DS_Store
+
+### Windows
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+### Tools
+.idea/
+*.iml
+
+### 编译后文件
+target/
+static/
+
+/.project
