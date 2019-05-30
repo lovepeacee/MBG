@@ -12,8 +12,8 @@
         <commentGenerator type="config.MyCommentGenerator"></commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://10.200.10.140:3306/loan?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Shanghai&amp;allowMultiQueries=true"
-                        userId="loan2018" password="loan2018_"/>
+                        connectionURL="jdbc:mysql://10.200.100.100:3306/loan?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Shanghai&amp;allowMultiQueries=true"
+                        userId="name" password="password"/>
 
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
