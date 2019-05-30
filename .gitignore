@@ -26,6 +26,7 @@ $RECYCLE.BIN/
 
 ### 编译后文件
 target/
+### 静态文件
 static/
 
 /.project
