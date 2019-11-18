@@ -3,52 +3,117 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.apache.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-    <classPathEntry location="/Users/helloworld/.m2/repository/mysql/mysql-connector-java/5.1.46/mysql-connector-java-5.1.46.jar"/>
+    <classPathEntry
+            location="/Users/helloworld/.m2/repository/mysql/mysql-connector-java/5.1.46/mysql-connector-java-5.1.46.jar"/>
 
-    <context id="ssm-context" targetRuntime="MyBatis3">
+    <!--defaultModelType="flat" 不生成key实体类,复合主键的原因-->
+    <context id="ssm-context" targetRuntime="MyBatis3" defaultModelType="flat">
         <!-- 自定义生成插件 生成toString方法/实现Serializable接口--><!-- 插件可以写多个-->
-        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="config.MyToStringGenerator"/>
+
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+
         <!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>-->
         <commentGenerator type="config.MyCommentGenerator"></commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://10.200.100.100:3306/loan?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Shanghai&amp;allowMultiQueries=true"
-                        userId="name" password="password"/>
-
+                        connectionURL="jdbc:mysql://10.200.10.140:3306/loan?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Shanghai&amp;allowMultiQueries=true"
+                        userId="loan2018" password="loan2018_">
+            <!-- 这个针对生成XXXXkey.的实体类不好使-->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.csii.loan.product.model.prd"
+        <!--实体类-->
+        <javaModelGenerator targetPackage="com.csii.loan.batch.bean.jd"
                             targetProject="src/main/java"/>
 
-
-        <sqlMapGenerator targetPackage="mapper.prd"
+        <!--mapper XML-->
+        <sqlMapGenerator targetPackage="mapper.batch.jd"
                          targetProject="src/main/resources"/>
 
+        <!--mapper接口-->
         <javaClientGenerator
                 type="XMLMAPPER"
-                targetPackage="com.csii.loan.product.model.prd.mapper"
+                targetPackage="com.csii.loan.batch.mapper.jd"
                 targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <table tableName="prd_grt_prop"
-               domainObjectName="prdGrtProp"
+        <table tableName="jdjtgl_jd_gl"
+               domainObjectName="JdjtglJdGl"
                enableCountByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
                enableUpdateByExample="false">
             <property name="useActualColumnNames" value="flase"/>
+            <!--是否生成 super tostring-->
+            <property name="useToStringFromRoot" value="flase"/>
             <!-- 忽略指定的column -->
-            <ignoreColumn column="id"  delimitedColumnName="true" />
-            <ignoreColumn column="cur_vers"  delimitedColumnName="true" />
-            <ignoreColumn column="create_user"  delimitedColumnName="true" />
-            <ignoreColumn column="create_org"  delimitedColumnName="true" />
-            <ignoreColumn column="create_time"  delimitedColumnName="true" />
-            <ignoreColumn column="update_time"  delimitedColumnName="true" />
-            <ignoreColumn column="update_user"  delimitedColumnName="true" />
-            <ignoreColumn column="update_org"  delimitedColumnName="true" />
+            <!--<ignoreColumn column="id"  delimitedColumnName="true" />-->
+            <!--<ignoreColumn column="cur_vers"  delimitedColumnName="true" />-->
+            <!--<ignoreColumn column="create_user"  delimitedColumnName="true" />-->
+            <!--<ignoreColumn column="create_org"  delimitedColumnName="true" />-->
+            <!--<ignoreColumn column="create_time"  delimitedColumnName="true" />-->
+            <!--<ignoreColumn column="update_time"  delimitedColumnName="true" />-->
+            <!--<ignoreColumn column="update_user"  delimitedColumnName="true" />-->
+            <!--<ignoreColumn column="update_org"  delimitedColumnName="true" />-->
+        </table>
+
+        <table tableName="jdjt_jd_quotaadjust"
+               domainObjectName="JdjtJdQuotaadjust"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="flase"/>
+        </table>
+
+        <table tableName="jdjt_jd_plan"
+               domainObjectName="JdjtJdPlan"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="flase"/>
+        </table>
+
+        <table tableName="jdjt_jd_loan"
+               domainObjectName="JdjtJdLoan"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="flase"/>
+        </table>
+
+        <table tableName="jdjt_jd_flow"
+               domainObjectName="JdjtJdFlow"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="flase"/>
+        </table>
+
+        <table tableName="jdjt_jd_cuscredit"
+               domainObjectName="JdjtJdCuscredit"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="flase"/>
+        </table>
+
+        <table tableName="jdjt_jd_cus"
+               domainObjectName="JdjtJdCus"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="flase"/>
         </table>
     </context>
 </generatorConfiguration>
